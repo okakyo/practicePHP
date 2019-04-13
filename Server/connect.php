@@ -46,10 +46,12 @@ class SQLClass{
 $sql="SELECT * FROM example";
 $sql2="SELECT * FROM example WHERE id=:id";
 //変数の設定
-$test=1;
+$test=$_GET['id'];
 //クラスの中の関数の呼び出し
+if($test)
+  $items=$obj->plural($sql2,$test);
+else
 $items=$obj->select($sql);
-$items2=$obj->plural($sql2,$test);
 ?>
 <!doctype html>
 <html lang="ja">
@@ -59,6 +61,10 @@ $items2=$obj->plural($sql2,$test);
 </head>
 <body>
   <h2>全データの表示</h2>
+  <form>
+      <input action="index.php" name="id" type="text">
+      <button type="submit">検索</button>
+  </form>
   <hr/>
   <?php foreach($items as $item) : ?>
     <h3>タイトル名：<?php echo $item['title']; ?></h3>
@@ -67,13 +73,5 @@ $items2=$obj->plural($sql2,$test);
     <hr/>
   <?php endforeach; ?>
 
-  <h2>ID=<?php echo $test?>のデータの表示</h2>
-  <?php foreach($items2 as $item) : ?>
-    
-    <p>タイトル名：<?php echo $item['title']; ?></p>
-    <p>発案者：<?php echo $item['author']; ?></p>
-    <p>内容：<?php echo $item['detail']; ?></p>
-    <hr/>
-  <?php endforeach; ?>
 </body>
 </html>
