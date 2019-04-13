@@ -41,12 +41,12 @@ class SQLClass{
     
 }
 
-  $obj=new SQLClass();
+$obj=new SQLClass();
 //sql文の発行
 $sql="SELECT * FROM example";
 $sql2="SELECT * FROM example WHERE id=:id";
 //変数の設定
-$test=$_GET['id'];
+$tt=$_GET['id']es;
 //クラスの中の関数の呼び出し
 if($test){
   $items=$obj->plural($sql2,$test);}
