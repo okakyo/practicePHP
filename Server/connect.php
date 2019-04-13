@@ -48,10 +48,10 @@ $sql2="SELECT * FROM example WHERE id=:id";
 //変数の設定
 $test=$_GET['id'];
 //クラスの中の関数の呼び出し
-if($test)
-  $items=$obj->plural($sql2,$test);
-else
-$items=$obj->select($sql);
+if($test){
+  $items=$obj->plural($sql2,$test);}
+else{
+$items=$obj->select($sql);}
 ?>
 <!doctype html>
 <html lang="ja">
@@ -72,6 +72,5 @@ $items=$obj->select($sql);
     <p>内容：<?php echo $item['detail']; ?></p>
     <hr/>
   <?php endforeach; ?>
-
 </body>
 </html>
